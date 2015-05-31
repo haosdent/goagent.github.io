@@ -1,80 +1,51 @@
 <!doctype html>
-<html>
-  <head>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
     <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <script>
-        if (location.href.indexOf("http://") == 0) {
-            location = location.href.replace("http:", "https:", 1);
-        }
-    </script>
-    <style>
-        body{min-width:200px; max-width:900px; margin:auto; padding:16px;}
-        .markdown-body {-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #333; overflow: hidden; font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; word-wrap: break-word;}
-    </style>
-    <script src="marked.js"></script>
-  </head>
-  <body>
-    <div id="content" class="markdown-body"></div>
-    <script>
-    function b64decode(e) {
-        var key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-        var t = "";
-        var n, r, i;
-        var s, o, u, a;
-        var f = 0;
-        e = e.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-        while (f < e.length) {
-            s = key.indexOf(e.charAt(f++));
-            o = key.indexOf(e.charAt(f++));
-            u = key.indexOf(e.charAt(f++));
-            a = key.indexOf(e.charAt(f++));
-            n = s << 2 | o >> 4;
-            r = (o & 15) << 4 | u >> 2;
-            i = (u & 3) << 6 | a;
-            t = t + String.fromCharCode(n);
-            if (u != 64) {
-                t = t + String.fromCharCode(r)
-            }
-            if (a != 64) {
-                t = t + String.fromCharCode(i)
-            }
-        }
-        var t2 = "";
-        var m = 0;
-        var r2 = c1 = c2 = 0;
-        while (m < t.length) {
-            r2 = t.charCodeAt(m);
-            if (r2 < 128) {
-                t2 += String.fromCharCode(r2);
-                m++
-            } else if (r2 > 191 && r2 < 224) {
-                c2 = t.charCodeAt(m + 1);
-                t2 += String.fromCharCode((r2 & 31) << 6 | c2 & 63);
-                m += 2
-            } else {
-                c2 = t.charCodeAt(m + 1);
-                c3 = t.charCodeAt(m + 2);
-                t2 += String.fromCharCode((r2 & 15) << 12 | (c2 & 63) << 6 | c3 & 63);
-                m += 3
-            }
-        }
-        return t2
-    }
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    function render(readme) {
-        text = b64decode(readme['data']['content']);
-        document.title = 'GoAgent ' + text.split("\n")[0].split(/\s+/)[1];
-        document.getElementById("content").innerHTML = marked(text);
-    }
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" type="text/css" href="bower_components/pen/src/pen.css">
+    <!-- endbower -->
+    <!-- endbuild -->
 
-    (function() {
-        var script   = document.createElement("script");
-        script.type  = "text/javascript";
-        script.src   = "https://api.github.com/repos/goagent/goagent/readme?callback=render";
-        document.body.appendChild(script);
-    })();
-    </script>
-    <link rel="stylesheet" href="github-markdown.css">
-  </body>
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+<body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="nav" class="pen">
+        <img class="logo" src="apple-touch-icon.png"></img>GoAgent Wiki
+    </div>
+    <div id="content" class="pen">
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/marked/marked.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/controllers.js"></script>
+    <!-- endbuild -->
+</body>
 </html>
